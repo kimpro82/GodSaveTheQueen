@@ -65,7 +65,7 @@ attach(iris)
 ## This will make the crazy errors that you've been suffering just right now.
 
 lm(Sepal.Length~Sepal.Width+Petal.Length+Petal.Width)
-## good
+## Good
 
 
 ## 4. Bonus
