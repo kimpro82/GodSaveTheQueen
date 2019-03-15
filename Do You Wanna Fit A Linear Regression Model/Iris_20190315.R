@@ -27,7 +27,7 @@ iris.dep <- as.matrix(iris[,1])     ## 'dep' means dependant variable(Y).
 iris.var <- as.matrix(iris[,2:4])   ## Then you know what 'var' is(, or die).
 
 ## Additionally, do you understand what [,1] [,2:4] mean?
-## You'd better to search about [indexing & slicing].
+## You'd better search about [indexing & slicing].
 ## Don't be absorbed in slicing only sushi, but try also slicing your data.
 ## Please.
 
