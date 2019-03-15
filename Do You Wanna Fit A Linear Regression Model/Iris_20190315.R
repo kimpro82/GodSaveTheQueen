@@ -72,6 +72,7 @@ lm(Sepal.Length~Sepal.Width+Petal.Length+Petal.Width)
 
 ## If this story end here, people will guess I am an idiot who doesn't understand iris data.
 ## Please enjoy the real iris with the following.
+windows(width=7, height=7)
 pairs(iris[1:4], pch=21,
       main="But I hate flowers",
       bg=c("red", "blue", "green")[unclass(Species)])
