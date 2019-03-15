@@ -1,7 +1,7 @@
 # Do You Wanna Fit A Linear Regression Model
 (2019.03.15 Fri)
 
-### ※ Why I choose the dataset 'iris'?
+### ※ Why do I choose the dataset 'iris'?
 
 That's just because it is a famous dataset for fool newbies.
 
