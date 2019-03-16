@@ -1,7 +1,30 @@
-# Do You Wanna Fit A Linear Regression Model
-(2019.03.15 Fri)
 
-### ※ Why do I choose the dataset `iris`?
+# Do You Wanna Fit A Linear Regression Model
+
+## Matrix Operation (2019.03.17 Sun)
+practice of matrix operation related with the linear regression analysis
+
+<pre><code>a <- matrix(rep(1:6), ncol=2)
+a</code></pre>
+
+#### `t()` : get the transpose matrix(전치행렬) of x
+<pre><code>b <- t(a)
+b</code></pre>
+
+#### Use of `%*%` operator and `crossprod()`
+
+##### 1) good
+<pre><code>b %*% a
+crossprod(a)</code></pre>
+
+##### 2) bad
+<pre><code>a %*% b
+crossprod(b)</code></pre>
+
+
+## Iris (2019.03.15 Fri)
+
+#### ※ Why do I choose the dataset `iris`?
 
 That's just because it is a famous dataset for fool newbies.
 
