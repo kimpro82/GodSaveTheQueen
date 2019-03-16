@@ -1,13 +1,13 @@
 # Do You Wanna Fit A Linear Regression Model
 (2019.03.15 Fri)
 
-### ※ Why do I choose the dataset 'iris'?
+### ※ Why do I choose the dataset `iris`?
 
 That's just because it is a famous dataset for fool newbies.
 
 I don't mean this data is suitable for a simple linear regression model.
 
-It was just caused by your request of showing matrix operation and lm() function use.
+It was just caused by your request of showing matrix operation and `lm()` function use.
 
 
 ### 1. Using as.matrix()
@@ -32,7 +32,7 @@ lm(iris.dep2~iris.var2)
 
 ![alt text](https://github.com/kimpro82/God-Save-The-Queen/blob/master/Do%20You%20Wanna%20Fit%20A%20Linear%20Regression%20Model/image/2019-03-15%202.cbind().PNG)
 
-I hate damn rbind()/cbind().
+I hate damn `rbind()`/`cbind()`.
 
 ### 3. Just input the dataset into lm() directly
 
@@ -47,9 +47,9 @@ lm(Sepal.Length~Sepal.Width+Petal.Length+Petal.Width)
 
 ### 4. Bonus
 
-If this story ends here, people will guess I am an idiot who doesn't understand iris data.
+If this story ends here, people will guess I am an idiot who doesn't understand `iris` data.
 
-Please enjoy the real iris with the following.
+Please enjoy the real `iris` with the following.
 
 <pre><code>windows(width=7, height=7)
 pairs(iris[1:4], pch=21,
