@@ -10,10 +10,10 @@ b
 
 # Use of %*% operator and crossprod()
 
-# 1)
+# 1) good
 b %*% a
 crossprod(a)
 
-# 2)
+# 2) bad
 a %*% b
 crossprod(b)
