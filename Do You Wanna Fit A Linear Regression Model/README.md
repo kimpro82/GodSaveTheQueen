@@ -12,7 +12,7 @@ a</code></pre>
 
 ![matrix a](https://github.com/kimpro82/God-Save-The-Queen/blob/master/Do%20You%20Wanna%20Fit%20A%20Linear%20Regression%20Model/image/2019-03-17%20matrix%20a.PNG)
 
-#### - `t()` : get the transpose matrix(전치행렬) of x
+#### - `t()` : get the transpose matrix(전치행렬) of matrix x
 <pre><code>b <- t(a)
 b</code></pre>
 
