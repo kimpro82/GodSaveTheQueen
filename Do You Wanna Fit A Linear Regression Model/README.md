@@ -1,15 +1,21 @@
-
 # Do You Wanna Fit A Linear Regression Model
+
 
 ## Matrix Operation (2019.03.17 Sun)
 practice of matrix operation related with the linear regression analysis
 
+
 <pre><code>a <- matrix(rep(1:6), ncol=2)
 a</code></pre>
+
+![matrix a](https://github.com/kimpro82/God-Save-The-Queen/blob/master/Do%20You%20Wanna%20Fit%20A%20Linear%20Regression%20Model/image/2019-03-17%20matrix%20a.PNG)
 
 #### `t()` : get the transpose matrix(전치행렬) of x
 <pre><code>b <- t(a)
 b</code></pre>
+
+![matrix t(a)](https://github.com/kimpro82/God-Save-The-Queen/blob/master/Do%20You%20Wanna%20Fit%20A%20Linear%20Regression%20Model/image/2019-03-17%20matrix%20t(a).PNG)
+
 
 #### Use of `%*%` operator and `crossprod()`
 
@@ -17,9 +23,14 @@ b</code></pre>
 <pre><code>b %*% a
 crossprod(a)</code></pre>
 
+![crossprod(a)](https://github.com/kimpro82/God-Save-The-Queen/blob/master/Do%20You%20Wanna%20Fit%20A%20Linear%20Regression%20Model/image/2019-03-17%20crossprod(a).PNG)
+
 ##### 2) bad
 <pre><code>a %*% b
 crossprod(b)</code></pre>
+
+![crossprod(b)](https://github.com/kimpro82/God-Save-The-Queen/blob/master/Do%20You%20Wanna%20Fit%20A%20Linear%20Regression%20Model/image/2019-03-17%20crossprod(b).PNG)
+
 
 
 ## Iris (2019.03.15 Fri)
@@ -43,7 +54,7 @@ iris.var <- as.matrix(iris[,2:4])
 lm(iris.dep~iris.var)
 </code></pre>
      
-![alt text](https://github.com/kimpro82/God-Save-The-Queen/blob/master/Do%20You%20Wanna%20Fit%20A%20Linear%20Regression%20Model/image/2019-03-15%201.as.matrix().PNG)
+![1.as.matrix()](https://github.com/kimpro82/God-Save-The-Queen/blob/master/Do%20You%20Wanna%20Fit%20A%20Linear%20Regression%20Model/image/2019-03-15%201.as.matrix().PNG)
 
 ### 2. Using `rbind()`/`cbind()`
 
@@ -53,7 +64,7 @@ iris.var2 <- cbind(iris[,2:4])
 lm(iris.dep2~iris.var2)
 </code></pre>
 
-![alt text](https://github.com/kimpro82/God-Save-The-Queen/blob/master/Do%20You%20Wanna%20Fit%20A%20Linear%20Regression%20Model/image/2019-03-15%202.cbind().PNG)
+![2.cbind()](https://github.com/kimpro82/God-Save-The-Queen/blob/master/Do%20You%20Wanna%20Fit%20A%20Linear%20Regression%20Model/image/2019-03-15%202.cbind().PNG)
 
 I hate damn `rbind()`/`cbind()`.
 
@@ -66,7 +77,7 @@ Actually there's not any pre-processing necessary.
 lm(Sepal.Length~Sepal.Width+Petal.Length+Petal.Width)
 </code></pre>
 
-![alt text](https://github.com/kimpro82/God-Save-The-Queen/blob/master/Do%20You%20Wanna%20Fit%20A%20Linear%20Regression%20Model/image/2019-03-15%203.attach().PNG)
+![3.attach()](https://github.com/kimpro82/God-Save-The-Queen/blob/master/Do%20You%20Wanna%20Fit%20A%20Linear%20Regression%20Model/image/2019-03-15%203.attach().PNG)
 
 ### 4. Bonus
 
@@ -80,7 +91,7 @@ pairs(iris[1:4], pch=21,
       bg=c("red", "blue", "green")[unclass(Species)])
 </code></pre>
 
-![alt text](https://github.com/kimpro82/God-Save-The-Queen/blob/master/Do%20You%20Wanna%20Fit%20A%20Linear%20Regression%20Model/image/iris_pairs_20190315.png)
+![iris_pairs](https://github.com/kimpro82/God-Save-The-Queen/blob/master/Do%20You%20Wanna%20Fit%20A%20Linear%20Regression%20Model/image/iris_pairs_20190315.png)
 
 Thank you.
 I know you love me.
