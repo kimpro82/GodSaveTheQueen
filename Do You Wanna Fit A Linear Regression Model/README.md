@@ -1,5 +1,7 @@
 # Do You Wanna Fit A Linear Regression Model
 
+![do you want to build a snowman](https://github.com/kimpro82/God-Save-The-Queen/blob/master/images/do%20you%20want%20to%20build%20a%20snowman.png)
+
 
 ## Matrix Operation (2019.03.17 Sun)
 practice of matrix operation related with the linear regression analysis
