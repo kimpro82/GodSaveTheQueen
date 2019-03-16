@@ -3,7 +3,7 @@
 a <- matrix(rep(1:6), ncol=2)
 a
 
-# t() : get the transpose matrix(전치행렬) of x
+# t() : get the transpose matrix(전치행렬) of matrix x
 b <- t(a)
 b
 
