@@ -47,7 +47,7 @@ lm(Sepal.Length~Sepal.Width+Petal.Length+Petal.Width)
 
 ### 4. Bonus
 
-If this story end here, people will guess I am an idiot who doesn't understand iris data.
+If this story ends here, people will guess I am an idiot who doesn't understand iris data.
 
 Please enjoy the real iris with the following.
 
