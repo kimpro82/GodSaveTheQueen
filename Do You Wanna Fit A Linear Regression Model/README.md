@@ -10,7 +10,7 @@ I don't mean this data is suitable for a simple linear regression model.
 It was just caused by your request of showing matrix operation and `lm()` function use.
 
 
-### 1. Using as.matrix()
+### 1. Using `as.matrix()`
 
 This function forces anything to matrix regadless of its will, such like your eyes have made me fall in love.
 
@@ -22,7 +22,7 @@ lm(iris.dep~iris.var)
      
 ![alt text](https://github.com/kimpro82/God-Save-The-Queen/blob/master/Do%20You%20Wanna%20Fit%20A%20Linear%20Regression%20Model/image/2019-03-15%201.as.matrix().PNG)
 
-### 2. Using rbind()/cbind()
+### 2. Using `rbind()`/`cbind()`
 
 <pre><code>iris.dep2 <- cbind(iris[,1])
 iris.var2 <- cbind(iris[,2:4])
@@ -34,7 +34,7 @@ lm(iris.dep2~iris.var2)
 
 I hate damn `rbind()`/`cbind()`.
 
-### 3. Just input the dataset into lm() directly
+### 3. Just input the dataset into `lm()` directly
 
 Actually there's not any pre-processing necessary.
 
