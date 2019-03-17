@@ -100,3 +100,6 @@ I know you love me.
 
 Yes I am a too much talker.
 May I tell you my story when I was in LA?
+
+![Too Much Talker_Park Chanho](
+https://github.com/kimpro82/God-Save-The-Queen/blob/master/Do%20You%20Wanna%20Fit%20A%20Linear%20Regression%20Model/image/Too%20Much%20Talker_Park%20Chanho.jpg)
