@@ -1,4 +1,4 @@
-This is definitely devotional support from a husband, for the wife's paper writing.
+There are definitely devotional support from a husband to his wife's paper writing.
 
 ## Links
 
