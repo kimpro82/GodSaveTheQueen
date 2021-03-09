@@ -49,6 +49,8 @@ detach(Doctor)
 > (Intercept)     children       access       health  
 >      1.6075      -0.2512       1.4995       0.6506
 
+It's very easy, right?
+
 
 ## Matrix Operation (2019.03.17 Sun)
 practice of matrix operation related with the linear regression analysis
