@@ -30,7 +30,14 @@ attach(Doctor)
 detach(Doctor)
 ```
 
->                 [,1]  
+>   doctor children access health  
+> 1      0        1   0.50  0.495  
+> 2      1        3   0.17  0.520  
+> 3      0        4   0.42 -1.227  
+> 4      0        2   0.33 -1.524  
+> 5     11        1   0.67  0.173  
+> 6      3        1   0.25 -0.905
+
 > children 0.006557745  
 > access   3.676781862  
 > health   0.667708512
