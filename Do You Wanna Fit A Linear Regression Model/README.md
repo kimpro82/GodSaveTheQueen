@@ -1,6 +1,6 @@
 # Do You Wanna Fit A Linear Regression Model
 
-![do you want to build a snowman](https://github.com/kimpro82/God-Save-The-Queen/blob/master/images/do%20you%20want%20to%20build%20a%20snowman.png)
+![do you want to build a snowman](../images/do%20you%20want%20to%20build%20a%20snowman.png)
 
 
 ## Regression (Edcat / Doctor) (2019?)
@@ -61,7 +61,7 @@ a <- matrix(rep(1:6), ncol=2)
 a
 ```
 
-![matrix a](https://github.com/kimpro82/God-Save-The-Queen/blob/master/Do%20You%20Wanna%20Fit%20A%20Linear%20Regression%20Model/image/2019-03-17%20matrix%20a.PNG)
+![matrix a](./image/2019-03-17%20matrix%20a.PNG)
 
 #### - `t()` : get the transpose matrix(전치행렬) of matrix x
 ```R
@@ -69,7 +69,7 @@ b <- t(a)
 b
 ```
 
-![matrix t(a)](https://github.com/kimpro82/God-Save-The-Queen/blob/master/Do%20You%20Wanna%20Fit%20A%20Linear%20Regression%20Model/image/2019-03-17%20matrix%20t(a).PNG)
+![matrix t(a)](./image/2019-03-17%20matrix%20t(a).PNG)
 
 
 #### - Use of `%*%` operator and `crossprod()`
@@ -80,7 +80,7 @@ b %*% a
 crossprod(a)
 ```
 
-![crossprod(a)](https://github.com/kimpro82/God-Save-The-Queen/blob/master/Do%20You%20Wanna%20Fit%20A%20Linear%20Regression%20Model/image/2019-03-17%20crossprod(a).PNG)
+![crossprod(a)](./image/2019-03-17%20crossprod(a).PNG)
 
 ##### 2) bad
 ```R
@@ -88,7 +88,7 @@ a %*% b
 crossprod(b)
 ```
 
-![crossprod(b)](https://github.com/kimpro82/God-Save-The-Queen/blob/master/Do%20You%20Wanna%20Fit%20A%20Linear%20Regression%20Model/image/2019-03-17%20crossprod(b).PNG)
+![crossprod(b)](./image/2019-03-17%20crossprod(b).PNG)
 
 
 ## Iris (2019.03.15 Fri)
@@ -113,7 +113,7 @@ iris.var <- as.matrix(iris[,2:4])
 lm(iris.dep~iris.var)
 ```
      
-![1.as.matrix()](https://github.com/kimpro82/God-Save-The-Queen/blob/master/Do%20You%20Wanna%20Fit%20A%20Linear%20Regression%20Model/image/2019-03-15%201.as.matrix().PNG)
+![1.as.matrix()](./image/2019-03-15%201.as.matrix().PNG)
 
 ### 2. Using `rbind()`/`cbind()`
 
@@ -124,7 +124,7 @@ iris.var2 <- cbind(iris[,2:4])
 lm(iris.dep2~iris.var2)
 ```
 
-![2.cbind()](https://github.com/kimpro82/God-Save-The-Queen/blob/master/Do%20You%20Wanna%20Fit%20A%20Linear%20Regression%20Model/image/2019-03-15%202.cbind().PNG)
+![2.cbind()](./image/2019-03-15%202.cbind().PNG)
 
 I hate damn `rbind()`/`cbind()`.
 
@@ -138,7 +138,7 @@ attach(iris)
 lm(Sepal.Length~Sepal.Width+Petal.Length+Petal.Width)
 ```
 
-![3.attach()](https://github.com/kimpro82/God-Save-The-Queen/blob/master/Do%20You%20Wanna%20Fit%20A%20Linear%20Regression%20Model/image/2019-03-15%203.attach().PNG)
+![3.attach()](./image/2019-03-15%203.attach().PNG)
 
 ### 4. Bonus
 
@@ -153,7 +153,7 @@ pairs(iris[1:4], pch=21,
       bg=c("red", "blue", "green")[unclass(Species)])
 ```
 
-![iris_pairs](https://github.com/kimpro82/God-Save-The-Queen/blob/master/Do%20You%20Wanna%20Fit%20A%20Linear%20Regression%20Model/image/iris_pairs_20190315.png)
+![iris_pairs](./image/iris_pairs_20190315.png)
 
 Thank you.
 I know you love me.
@@ -161,5 +161,4 @@ I know you love me.
 Yes I am a too much talker.
 May I tell you my story when I was in LA?
 
-![Too Much Talker_Park Chanho](
-https://github.com/kimpro82/God-Save-The-Queen/blob/master/Do%20You%20Wanna%20Fit%20A%20Linear%20Regression%20Model/image/Too%20Much%20Talker_Park%20Chanho.jpg)
+![Too Much Talker_Park Chanho](./image/Too%20Much%20Talker_Park%20Chanho.jpg)
