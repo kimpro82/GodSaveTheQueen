@@ -1,7 +1,9 @@
 # Do You Wanna Fit A Linear Regression Model
-
 ![do you want to build a snowman](../images/do%20you%20want%20to%20build%20a%20snowman.png)
 
+- Regression (Edcat / Doctor) (2019?)
+- Matrix Operation (2019.03.17 Sun)
+- Iris (2019.03.15 Fri)
 
 ## Regression (Edcat / Doctor) (2019?)
 It is a forsaken file that can't be found when and why it has been written, but seems to be related with my wife's R study in 2019.  
