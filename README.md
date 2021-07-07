@@ -1,11 +1,12 @@
-# God-Save-The-Queen
+# God Save The Queen
 To help my wife who is a R & Python newbie
 
 ![300 my queen my wife my love](https://github.com/kimpro82/God-Save-The-Queen/blob/master/images/300%20my%20queen%20my%20wife%20my%20love.gif)
 
 
 ## Text Mining / Emotion Analysis (2020.3~)
-For my wife's paper writing  
+For my wife's paper writing
+
 ![Munch Scream](https://github.com/kimpro82/God-Save-The-Queen/blob/master/images/Munch_Scream.jpg)
 
 
