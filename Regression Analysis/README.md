@@ -211,10 +211,9 @@ pairs(iris[1:4], pch=21,
 ```
 ![Iris_pairs](Images/Iris_pairs_20190315.png)
 
-Thank you.  
-I know you love me.
+---
 
-Yes I am a too much talker.  
-May I tell you my story when I was in LA?
+Thank you. Of course I know you love me.  
+May I tell you my story more when I was in LA?
 
 ![Too Much Talker_Park Chanho](Images/TooMuchTalker_ParkChanho.jpg)
