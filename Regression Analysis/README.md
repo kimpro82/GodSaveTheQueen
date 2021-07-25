@@ -4,8 +4,8 @@
 
 - SAS - Regression (2021.07.16 Fri)
 - R - Regression (Edcat / Doctor) (2019?)
-- R- Matrix Operation (2019.03.17 Sun)
-- R- Iris (2019.03.15 Fri)
+- R - Matrix Operation (2019.03.17 Sun)
+- R - Iris (2019.03.15 Fri)
 
 
 ## SAS - Regression (2021.07.16 Fri)
@@ -80,7 +80,7 @@ run;
 ```
 
 
-## Regression (Edcat / Doctor) (2019?)
+## R - Regression (Edcat / Doctor) (2019?)
 This is a forsaken file that can't be found when and why it has been written, but seems to be related with my wife's R study in 2019.  
 But, one thing is for certain, it never would be written for me!
 
@@ -121,7 +121,7 @@ detach(Doctor)
 It's hell easy, right?
 
 
-## Matrix Operation (2019.03.17 Sun)
+## R - Matrix Operation (2019.03.17 Sun)
 
 Practice of matrix operation related with the linear regression analysis
 
@@ -155,7 +155,7 @@ crossprod(b)
 ![crossprod(b)](Images/Matrix_crossprod(b).PNG)
 
 
-## Iris (2019.03.15 Fri)
+## R - Iris (2019.03.15 Fri)
 
 #### ※ Why do I choose the dataset `iris`?
 
