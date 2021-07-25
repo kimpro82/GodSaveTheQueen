@@ -2,9 +2,6 @@
 /* 20210716 your hubby */
 
 
-/* comment : ctrl + / */
-/* cancel : shift + ctrl + / */
-
 /* read data from .sas7dbat file */
 
 libname test '{path}';
@@ -67,3 +64,6 @@ run;
 /* result output style
     : Tools > Options > Preference > Results > Style : Journal (recommended from your hubby)
 */
+
+/* comment : ctrl + / */
+/* cancel : shift + ctrl + / */
