@@ -6,7 +6,7 @@ For my wife who is a `R`, `Python` and `SAS` newbie
 
 
 ## Regression Analysis
-For my wife who is a newbie of matrix operation and fitting regression model in R
+For my wife who is a newbie of fitting regression model in `R` and `SAS`
 
 ![Do you want to build a snowman](Regression%20Analysis/Images/Do%20you%20want%20to%20build%20a%20snowman.png)
 
