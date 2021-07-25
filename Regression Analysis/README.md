@@ -9,8 +9,8 @@
 
 
 ## SAS - Regression (2021.07.16 Fri)
-There're very rare husbands who can help their wives' `SAS` work, but she's got it.
-
+There're very rare husbands who can help their wives' `SAS` work, but she's got it.  
+(※ Some specific informations are removed or replaced.)
 ```sas
 /* read data from .sas7dbat file */
 
