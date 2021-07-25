@@ -2,9 +2,82 @@
 
 ![do you want to build a snowman](Images/Do%20you%20want%20to%20build%20a%20snowman.png)
 
-- Regression (Edcat / Doctor) (2019?)
-- Matrix Operation (2019.03.17 Sun)
-- Iris (2019.03.15 Fri)
+- SAS - Regression (2021.07.16 Fri)
+- R - Regression (Edcat / Doctor) (2019?)
+- R- Matrix Operation (2019.03.17 Sun)
+- R- Iris (2019.03.15 Fri)
+
+
+## SAS - Regression (2021.07.16 Fri)
+- There're very rare husbands who can help their wives' `SAS` work, but she's got it.
+
+```sas
+/* read data from .sas7dbat file */
+
+libname test '{path}';
+
+data mydata;
+    set '{path\file.sas7dbat}';
+run;
+
+/* proc contents; */
+/* run; */
+```
+```sas
+/* test : each market's asset mean */
+
+proc univariate data = test.mydata;
+    by mkttype;
+    var at;
+    output out = test.mymean
+        mean = at_mean std = at_std;
+run;
+
+proc print data = test.mymean;
+run;
+```
+```sas
+/* regression test : asset ~ liabilities capital */
+
+proc corr data = test.mydata;
+    var at lt capital;
+
+proc reg data = test.mydata;
+    model at = lt capital / dw vif collin selection = backward;
+    /* option (show ouput for each obs.) : p - predicted value, clm - confidence interval, r - residual */
+    /* option : stb - standardized estimate */
+run;
+```
+```sas
+/* dummy variable (ex)
+    d1 = 0; d2 = 0;
+    if var1 = 1 then d1 = 1;
+    if var2 = 1 then d2 = 1;
+
+    model y = x1 x2 d1 d2;
+*/
+
+/* variable transformation (ex)
+    data mydata;
+        set 'path';
+        x1long = log(x1);
+        x2exp = exp(x2);
+        x3sq = x3^2;
+    run;
+
+    * non-linear regression : use "nlin" or "model" instead of "reg"
+*/
+```
+```sas
+/* seems there are very many missing obs. ex) ****** */
+
+/* result output style
+    : Tools > Options > Preference > Results > Style : Journal (recommended from your hubby)
+*/
+
+/* comment : ctrl + / */
+/* cancel : shift + ctrl + / */
+```
 
 
 ## Regression (Edcat / Doctor) (2019?)
