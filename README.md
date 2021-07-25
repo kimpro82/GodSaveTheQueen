@@ -1,6 +1,6 @@
 # God Save The Queen
 
-For my wife who is a `R` and `Python` newbie
+For my wife who is a `R`, `Python` and `SAS` newbie
 
 ![300 my queen my wife my love](Images/300%20my%20queen%20my%20wife%20my%20love.gif)
 
