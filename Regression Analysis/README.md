@@ -1,13 +1,88 @@
 # Do You Wanna Fit A Linear Regression Model
 
+For my wife who is a newbie at fitting regression model in `R` and `SAS`
+
 ![do you want to build a snowman](Images/Do%20you%20want%20to%20build%20a%20snowman.png)
 
-- Regression (Edcat / Doctor) (2019?)
-- Matrix Operation (2019.03.17 Sun)
-- Iris (2019.03.15 Fri)
+- [SAS - Regression (2021.07.16 Fri)](/Regression%20Analysis#sas---regression-20210716-fri)
+- [R - Regression (Edcat / Doctor) (2019?)](/Regression%20Analysis#r---regression-edcat--doctor-2019)
+- [R - Matrix Operation (2019.03.17 Sun)](/Regression%20Analysis#r---matrix-operation-20190317-sun)
+- [R - Iris (2019.03.15 Fri)](/Regression%20Analysis#r---iris-20190315-fri)
 
 
-## Regression (Edcat / Doctor) (2019?)
+## [SAS - Regression (2021.07.16 Fri)](/Regression%20Analysis#do-you-wanna-fit-a-linear-regression-model)
+There're very rare husbands who can help their wives' `SAS` work, but she's got it.  
+(※ Some specific informations are removed or replaced.)
+```sas
+/* read data from .sas7dbat file */
+
+libname test '{path}';
+
+data mydata;
+    set '{path\file.sas7dbat}';
+run;
+
+/* proc contents; */
+/* run; */
+```
+```sas
+/* test : each market's asset mean */
+
+proc univariate data = test.mydata;
+    by mkttype;
+    var at;
+    output out = test.mymean
+        mean = at_mean std = at_std;
+run;
+
+proc print data = test.mymean;
+run;
+```
+```sas
+/* regression test : asset ~ liabilities capital */
+
+proc corr data = test.mydata;
+    var at lt capital;
+
+proc reg data = test.mydata;
+    model at = lt capital / dw vif collin selection = backward;
+    /* option (show ouput for each obs.) : p - predicted value, clm - confidence interval, r - residual */
+    /* option : stb - standardized estimate */
+run;
+```
+```sas
+/* dummy variable (ex)
+    d1 = 0; d2 = 0;
+    if var1 = 1 then d1 = 1;
+    if var2 = 1 then d2 = 1;
+
+    model y = x1 x2 d1 d2;
+*/
+
+/* variable transformation (ex)
+    data mydata;
+        set 'path';
+        x1long = log(x1);
+        x2exp = exp(x2);
+        x3sq = x3^2;
+    run;
+
+    * non-linear regression : use "nlin" or "model" instead of "reg"
+*/
+```
+```sas
+/* seems there are very many missing obs. ex) ****** */
+
+/* result output style
+    : Tools > Options > Preference > Results > Style : Journal (recommended from your hubby)
+*/
+
+/* comment : ctrl + / */
+/* cancel : shift + ctrl + / */
+```
+
+
+## [R - Regression (Edcat / Doctor) (2019?)](/Regression%20Analysis#do-you-wanna-fit-a-linear-regression-model)
 This is a forsaken file that can't be found when and why it has been written, but seems to be related with my wife's R study in 2019.  
 But, one thing is for certain, it never would be written for me!
 
@@ -48,7 +123,7 @@ detach(Doctor)
 It's hell easy, right?
 
 
-## Matrix Operation (2019.03.17 Sun)
+## [R - Matrix Operation (2019.03.17 Sun)](/Regression%20Analysis#do-you-wanna-fit-a-linear-regression-model)
 
 Practice of matrix operation related with the linear regression analysis
 
@@ -82,7 +157,7 @@ crossprod(b)
 ![crossprod(b)](Images/Matrix_crossprod(b).PNG)
 
 
-## Iris (2019.03.15 Fri)
+## [R - Iris (2019.03.15 Fri)](/Regression%20Analysis#do-you-wanna-fit-a-linear-regression-model)
 
 #### ※ Why do I choose the dataset `iris`?
 
@@ -138,10 +213,9 @@ pairs(iris[1:4], pch=21,
 ```
 ![Iris_pairs](Images/Iris_pairs_20190315.png)
 
-Thank you.  
-I know you love me.
+---
 
-Yes I am a too much talker.  
-May I tell you my story when I was in LA?
+Thank you. Of course I know you love me.  
+May I tell you my story more when I was in LA?
 
 ![Too Much Talker_Park Chanho](Images/TooMuchTalker_ParkChanho.jpg)

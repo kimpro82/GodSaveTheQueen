@@ -1,12 +1,12 @@
 # God Save The Queen
 
-For my wife who is a `R` and `Python` newbie
+For my wife who is a `R`, `Python` and `SAS` newbie
 
 ![300 my queen my wife my love](Images/300%20my%20queen%20my%20wife%20my%20love.gif)
 
 
-## Regression Analysis
-For my wife who is a newbie of matrix operation and fitting regression model in R
+## [Regression Analysis](/Regression%20Analysis#do-you-wanna-fit-a-linear-regression-model)
+For my wife who is a newbie at fitting regression model in `R` and `SAS`
 
 ![Do you want to build a snowman](Regression%20Analysis/Images/Do%20you%20want%20to%20build%20a%20snowman.png)
 
