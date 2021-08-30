@@ -1,5 +1,7 @@
 # Do You Wanna Fit A Linear Regression Model
 
+For my wife who is a newbie at fitting regression model in `R` and `SAS`
+
 ![do you want to build a snowman](Images/Do%20you%20want%20to%20build%20a%20snowman.png)
 
 - [SAS - Regression (2021.07.16 Fri)](/Regression%20Analysis#sas---regression-20210716-fri)
