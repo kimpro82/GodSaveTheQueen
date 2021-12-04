@@ -1,3 +1,7 @@
+# 공공데이터포털 > 오픈API > 금융위원회_채권발행정보
+# https://www.data.go.kr/data/15043421/openapi.do
+
+
 import requests
 import Key              # call keys from Key.py
 
