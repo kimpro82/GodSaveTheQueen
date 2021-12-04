@@ -8,7 +8,7 @@ https://www.data.go.kr/
 
 ## [Request (2021.12.04)](/PublicDataPortal#public-data-portal)
 
-- Why error? You should **Choose the decoding key**. Don't encode already encoded key again
+- Why error? You should **choose the decoding key**. Don't encode the already encoded key again
 
 #### Key.py
 ```python
