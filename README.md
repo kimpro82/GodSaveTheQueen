@@ -19,6 +19,8 @@ For my wife who is a newbie at fitting regression model in `R` and `SAS`
 ## [Public Data Portal](/PublicDataPortal#public-data-portal)
 https://www.data.go.kr/
 
+![The Dark Portal](/PublicDataPortal/Images/WOW_DarkPortal_600.jpg)
+
 - [Request (2021.12.04)](/PublicDataPortal#request-20211204)
 
 
