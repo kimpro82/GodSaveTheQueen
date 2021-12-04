@@ -10,16 +10,16 @@ For my wife who is a newbie at fitting regression model in `R` and `SAS`
 
 ![Do you want to build a snowman](Regression%20Analysis/Images/Do%20you%20want%20to%20build%20a%20snowman.png)
 
-- [SAS - Regression (2021.07.16 Fri)](/Regression%20Analysis#sas---regression-20210716-fri)
+- [SAS - Regression (2021.07.16)](/Regression%20Analysis#sas---regression-20210716-fri)
 - [R - Regression (Edcat / Doctor) (2019?)](/Regression%20Analysis#r---regression-edcat--doctor-2019)
-- [R - Matrix Operation (2019.03.17 Sun)](/Regression%20Analysis#r---matrix-operation-20190317-sun)
-- [R - Iris (2019.03.15 Fri)](/Regression%20Analysis#r---iris-20190315-fri)
+- [R - Matrix Operation (2019.03.17)](/Regression%20Analysis#r---matrix-operation-20190317-sun)
+- [R - Iris (2019.03.15)](/Regression%20Analysis#r---iris-20190315-fri)
 
 
-# Public Data Portal
+## [Public Data Portal](/PublicDataPortal#public-data-portal)
 https://www.data.go.kr/
 
-- [Request (2021.12.04)]()
+- [Request (2021.12.04)](/PublicDataPortal#request-20211204)
 
 
 ## DART Crawling
