@@ -33,7 +33,7 @@ params = {
     'bondIsurNm' : '국동'
 }
 
-response = requests.get(url, params=params)     # require encoding key, not decoding key
+response = requests.get(url, params=params)     # doesn't require encoding key, but decoding key
 print(response.content)
 ```
 
