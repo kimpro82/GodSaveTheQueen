@@ -36,7 +36,7 @@ params = {
 Key.path += '/test.csv'                                                                     # Key.path is initially declared in Key.py
 
 # (3) Set the number how many times request data
-total = 20                                                                                  # put small number when test (max : 38960)
+total = 20                                                                                  # put small number during test (max : 38960)
 
 # (4) Set sleep period between each request (sec)
 sleepTime = 0                                                                               # set if request frequency limmit exists

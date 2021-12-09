@@ -34,7 +34,7 @@ params = {
 
 # (2) Set the row number to start and end
 startRow = 1
-endRow = 20                                                                                 # put small number when test (max : 38960)
+endRow = 20                                                                                 # put small number during test (max : 38960)
 
 # (3) Set the .csv file path to save data
 fileName = "test"                                                                           # don't include ".csv"
@@ -79,7 +79,7 @@ print("데이터 다운로드를 시작합니다.")
 startTime = time.perf_counter()                                                             # set the reference point to measure performance
 for i in range(startPage, endPage + 1) :                                                    # endPage + 1 → run until endPage
 
-    print(i)                                                                              # test : ok
+    # print(i)                                                                              # test : ok
 
     # Measure the completion ratio and avoid the data request frequency limmit if it exists (180 sec.)
     if (i != startPage) and (i % measurePerfTerm == 0 or i == endPage)  :
