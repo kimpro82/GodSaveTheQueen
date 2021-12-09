@@ -33,8 +33,8 @@ params = {
 }
 
 # (2) Set the row number to start and end
-startRow = 21
-endRow = 40                                                                                 # put small number when test (max : 38960)
+startRow = 1
+endRow = 20                                                                                 # put small number when test (max : 38960)
 
 # (3) Set the .csv file path to save data
 fileName = "test"                                                                           # don't include ".csv"
@@ -77,14 +77,16 @@ for c in Key.columns :
 
 print("데이터 다운로드를 시작합니다.")
 startTime = time.perf_counter()                                                             # set the reference point to measure performance
-for i in range(startPage, endPage + 1) :                                                     # endPage + 1 → run until endPage
+for i in range(startPage, endPage + 1) :                                                    # endPage + 1 → run until endPage
+
+    print(i)                                                                              # test : ok
 
     # Measure the completion ratio and avoid the data request frequency limmit if it exists (180 sec.)
     if (i != startPage) and (i % measurePerfTerm == 0 or i == endPage)  :
         elapseTime = time.perf_counter() - startTime
         completionRatio = (i - startPage + 1) / totalPage
         print("{:0,.1f}분 남았습니다. (진행률 : {:0,.1f}%)".format((elapseTime / completionRatio - elapseTime) / 60, completionRatio * 100))
-        # sleep(sleepTime)
+        time.sleep(sleepTime)
 
     # Refine raw XML data to be suitable with pandas dataframe
     params['pageNo'] = i
@@ -102,7 +104,7 @@ for i in range(startPage, endPage + 1) :                                        
 
 # 2.4 Save data as a .csv fie
 
-# print(df)                                                                                 # test : ok
+print(df)                                                                                 # test : ok
 if os.path.isfile(path) :                                                                   # to prevent overwriting the file
     print("이미 같은 이름의 파일이 존재합니다. (", path, ")")
     # don't need to run the loop again, just change the file name
