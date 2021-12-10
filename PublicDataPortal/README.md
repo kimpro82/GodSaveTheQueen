@@ -120,7 +120,7 @@ for i in range(startPage, endPage + 1) :                                        
 
 #### 2.4 Save data as a .csv fie
 ```R
-print(df)                                                                                 # test : ok
+# print(df)                                                                                 # test : ok
 if os.path.isfile(path) :                                                                   # to prevent overwriting the file
     print("이미 같은 이름의 파일이 존재합니다. (", path, ")")
     # don't need to run the loop again, just change the old file's name
