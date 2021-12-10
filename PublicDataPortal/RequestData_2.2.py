@@ -151,7 +151,7 @@ else :
 # print(df)                                                                                 # test : ok
 if os.path.isfile(path) :                                                                   # to prevent overwriting the file
     print("이미 같은 이름의 파일이 존재합니다. (", path, ")")
-    # don't need to run the loop again, just change the file name
+    # don't need to run the loop again, just change the old file's name
 else :
     df.to_csv(path, encoding = 'utf-8-sig')
     if os.path.isfile(path) :                                                               # I am too hospitable, you must have won a man like the lotto!

@@ -11,10 +11,10 @@ https://www.data.go.kr/
 
 ## [Request Data 2.1 (2021.12.09)](/PublicDataPortal#public-data-portal)
 
-- Improve details in conditions for setting : can specify the starting row and ending one
-- Print progress statement only 10 times
+- Improve details in conditions for setting : can specify the starting row and ending one in *2.2 Setting*
+- Print progress statements only 10 times
 - Save file-related changes  
-  · Add the number of starting/ending rows into the file name  
+  · Add the number of the starting & ending rows into the file name  
   · Check if there is already a file that has the same name
 
 #### 2.1 Required modules
@@ -81,7 +81,7 @@ for c in Key.columns :
 # print(soupColumns)                                                                        # test : ok
 ```
 
-#### Test : request data of 1 set
+#### (Test : request data of 1 set)
 ```R
 # response = requests.get(url, params=params)                                               # doesn't require encoding key, but decoding key
 # print(response.content)                                                                   # test to check if the raw XML data arrive well
@@ -123,7 +123,7 @@ for i in range(startPage, endPage + 1) :                                        
 print(df)                                                                                 # test : ok
 if os.path.isfile(path) :                                                                   # to prevent overwriting the file
     print("이미 같은 이름의 파일이 존재합니다. (", path, ")")
-    # don't need to run the loop again, just change the file name
+    # don't need to run the loop again, just change the old file's name
 else :
     df.to_csv(path, encoding = 'utf-8-sig')
     if os.path.isfile(path) :                                                               # I am too hospitable, you must have won a man like the lotto!
@@ -135,8 +135,8 @@ else :
 
 
 ## [Request Data 2 (2021.12.08)](/PublicDataPortal#public-data-portal)
-- Can control path to save data into `Key.py`
-- Arrange parameters that user should manage into 2.2 Setting
+- Can control path where to save data in `Key.py`
+- Arrange parameters that user should manage into *2.2 Setting*
 
 
 ## [Request Data (2021.12.04)](/PublicDataPortal#public-data-portal)
