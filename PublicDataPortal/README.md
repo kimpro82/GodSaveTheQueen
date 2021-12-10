@@ -4,9 +4,9 @@ https://www.data.go.kr/
 
 ![The Dark Portal](Images/WOW_DarkPortal_600.jpg)
 
-- [Request Data 2.1 (2021.12.09)]()
-- [Request Data 2 (2021.12.08)]()
-- [Request Data (2021.12.04)]()
+- [Request Data 2.1 (2021.12.09)](/PublicDataPortal#request-data-21-20211209)
+- [Request Data 2 (2021.12.08)](/PublicDataPortal#request-data-2-20211208)
+- [Request Data (2021.12.04)](/PublicDataPortal#request-data-20211204)
 
 
 ## [Request Data 2.1 (2021.12.09)](/PublicDataPortal#public-data-portal)
@@ -14,7 +14,7 @@ https://www.data.go.kr/
 - Improve details in conditions for setting : can specify the starting row and ending one
 - Print progress statement only 10 times
 - Save file-related changes  
-  · Add the number of starting/ending rows into the name  
+  · Add the number of starting/ending rows into the file name  
   · Check if there is already a file that has the same name
 
 #### 2.1 Required modules
@@ -135,7 +135,7 @@ else :
 
 
 ## [Request Data 2 (2021.12.08)](/PublicDataPortal#public-data-portal)
-- Can control the address to save data into `Key.py`
+- Can control path to save data into `Key.py`
 - Arrange parameters that user should manage into 2.2 Setting
 
 
