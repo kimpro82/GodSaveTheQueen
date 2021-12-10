@@ -132,6 +132,8 @@ else :
         print("데이터가 정상적으로 저장되지 않았습니다.")
 ```
 
+#### Result
+![Result](Images/PublicDataPortal_2.1.PNG)
 
 
 ## [Request Data 2 (2021.12.08)](/PublicDataPortal#public-data-portal)
