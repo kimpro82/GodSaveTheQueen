@@ -16,7 +16,7 @@ https://www.data.go.kr/
 - Save file-related changes  
   · Add the number of the starting & ending rows into the file name  
   · Check if there is already a file that has the same name
-- Include `Key_Sample.py` as an example
+- Include `Key_Sample.py` as an example (You should change the name as `Key.py`.)
 
 #### 2.1 Required modules
 ```R
