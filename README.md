@@ -5,6 +5,16 @@ For my wife who is a `R`, `Python` and `SAS` newbie
 ![300 my queen my wife my love](Images/300%20my%20queen%20my%20wife%20my%20love.gif)
 
 
+## [Public Data Portal](/PublicDataPortal#public-data-portal)
+https://www.data.go.kr/
+
+![The Dark Portal](/PublicDataPortal/Images/WOW_DarkPortal_600.jpg)
+
+- [Request Data 2.1 (2021.12.09)](/PublicDataPortal#request-data-21-20211209)
+- [Request Data 2 (2021.12.08)](/PublicDataPortal#request-data-2-20211208)
+- [Request Data 1 (2021.12.04)](/PublicDataPortal#request-data-1-20211204)
+
+
 ## [Regression Analysis](/Regression%20Analysis#do-you-wanna-fit-a-linear-regression-model)
 For my wife who is a newbie at fitting regression model in `R` and `SAS`
 
@@ -14,14 +24,6 @@ For my wife who is a newbie at fitting regression model in `R` and `SAS`
 - [R - Regression (Edcat / Doctor) (2019?)](/Regression%20Analysis#r---regression-edcat--doctor-2019)
 - [R - Matrix Operation (2019.03.17)](/Regression%20Analysis#r---matrix-operation-20190317-sun)
 - [R - Iris (2019.03.15)](/Regression%20Analysis#r---iris-20190315-fri)
-
-
-## [Public Data Portal](/PublicDataPortal#public-data-portal)
-https://www.data.go.kr/
-
-![The Dark Portal](/PublicDataPortal/Images/WOW_DarkPortal_600.jpg)
-
-- [Request (2021.12.04)](/PublicDataPortal#request-20211204)
 
 
 ## [DART Crawling](/DART%20Crawling#dart-crawling)
