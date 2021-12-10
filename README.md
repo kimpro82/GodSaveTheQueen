@@ -12,7 +12,7 @@ https://www.data.go.kr/
 
 - [Request Data 2.1 (2021.12.09)](/PublicDataPortal#request-data-21-20211209)
 - [Request Data 2 (2021.12.08)](/PublicDataPortal#request-data-2-20211208)
-- [Request Data (2021.12.04)](/PublicDataPortal#request-data-20211204)
+- [Request Data 1 (2021.12.04)](/PublicDataPortal#request-data-1-20211204)
 
 
 ## [Regression Analysis](/Regression%20Analysis#do-you-wanna-fit-a-linear-regression-model)

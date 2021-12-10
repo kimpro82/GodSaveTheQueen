@@ -6,7 +6,7 @@ https://www.data.go.kr/
 
 - [Request Data 2.1 (2021.12.09)](/PublicDataPortal#request-data-21-20211209)
 - [Request Data 2 (2021.12.08)](/PublicDataPortal#request-data-2-20211208)
-- [Request Data (2021.12.04)](/PublicDataPortal#request-data-20211204)
+- [Request Data 1 (2021.12.04)](/PublicDataPortal#request-data-1-20211204)
 
 
 ## [Request Data 2.1 (2021.12.09)](/PublicDataPortal#public-data-portal)
@@ -16,6 +16,7 @@ https://www.data.go.kr/
 - Save file-related changes  
   · Add the number of the starting & ending rows into the file name  
   · Check if there is already a file that has the same name
+- Include `Key_Sample.py` as an example
 
 #### 2.1 Required modules
 ```R
@@ -138,12 +139,16 @@ else :
 
 ## [Request Data 2 (2021.12.08)](/PublicDataPortal#public-data-portal)
 - Can control path where to save data in `Key.py`
+- Deal data with `BeautifulSoup` and `Pandas`
 - Arrange parameters that user should manage into *2.2 Setting*
+- Show progress ratio in real-time
+- Save data into a `.csv` file
 
 
-## [Request Data (2021.12.04)](/PublicDataPortal#public-data-portal)
-- Partially customized example code from the originally supported example one
-- Why error? You should **choose the decoding key**. Don't encode the already encoded key again
+## [Request Data 1 (2021.12.04)](/PublicDataPortal#public-data-portal)
+- Partially customized example code from the originally supported one
+- Request data once and receive its result in `XML` format
+- ※ Why error? You should **choose the decoding key**. Don't encode the already encoded key again
 
 #### Key.py
 ```python
