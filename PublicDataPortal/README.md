@@ -11,8 +11,8 @@ https://www.data.go.kr/
 
 
 ## [Request Data 2.2 (2021.12.09)](/PublicDataPortal#public-data-portal)
-- Add feature : loop to **request missing data** additionally in `2.4` (repeatable)
-- Error correction : fill "" when there is no data in the tag, instead of the process stop with an error occurrence
+- Add a loop to **request missing data** additionally in `2.4` (repeatable)
+- Fill empty(or absent) tag with `""`, instead of the process stop with an error occurrence
 
 ### Mainly changed parts from [Request Data 2.1 (2021.12.09)](/PublicDataPortal#request-data-21-20211209)
 
@@ -66,7 +66,7 @@ else :
                     if eval(soupColumns[j]) != None :                                       # check if the tag exists
                         temp.append(eval(soupColumns[j]))                                   # eval() : "item.numofrows.text" to item.numofrows.text
                     else :
-                        temp.append("")                                                     # fill "" when there is no data in the tag
+                        temp.append("")                                                     # fill empty(or absent) tag with ""
                     # print(temp)                                                           # test : ok - for finding where an error occurs
                 df.loc[i] = temp
 ```

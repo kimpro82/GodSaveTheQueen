@@ -101,7 +101,7 @@ for i in range(startPage, endPage + 1) :                                        
             if eval(soupColumns[j]) != None :                                               # check if the tag exists
                 temp.append(eval(soupColumns[j]))                                           # eval() : "item.numofrows.text" to item.numofrows.text
             else :
-                temp.append("")                                                             # fill "" when there is no data in the tag
+                temp.append("")                                                             # fill empty(or absent) tag with ""
             # print(temp)                                                                   # test : ok - for finding where an error occurs
         df.loc[i] = temp
 
@@ -140,7 +140,7 @@ else :
                     if eval(soupColumns[j]) != None :                                       # check if the tag exists
                         temp.append(eval(soupColumns[j]))                                   # eval() : "item.numofrows.text" to item.numofrows.text
                     else :
-                        temp.append("")                                                     # fill "" when there is no data in the tag
+                        temp.append("")                                                     # fill empty(or absent) tag with ""
                     # print(temp)                                                           # test : ok - for finding where an error occurs
                 df.loc[i] = temp
 

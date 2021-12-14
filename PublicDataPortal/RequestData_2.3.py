@@ -102,7 +102,7 @@ for i in range(startPage, endPage + 1) :                                        
             if eval(soupColumns[j]) != None :                                               # check if the tag exists
                 temp.append(eval(soupColumns[j]))                                           # eval() : "item.numofrows.text" to item.numofrows.text
             else :
-                temp.append("")                                                             # fill "" when there is no data in the tag
+                temp.append("")                                                             # fill empty(or absent) tag with ""
             # print(temp)                                                                   # test : ok - for finding where an error occurs
         df.loc[i] = temp
 
@@ -114,7 +114,7 @@ print("총 {}건의 요청 데이터 중 {}건의 다운로드가 완료되었�
 
 # 2.4 Loop to request missing data 
 
-missingPage = (endPage - startPage + 1) - len(df)                                             # get the number of missing data
+missingPage = (endPage - startPage + 1) - len(df)                                           # get the number of missing data
 measurePerfTerm = max(1, totalPage / 10)                                                    # check the completion ratio 10 times
 
 if missingPage == 0 :
@@ -123,8 +123,8 @@ if missingPage == 0 :
 else :
     print("누락된 데이터({}건)의 추가 다운로드를 시작합니다.".format(missingPage))
 
-    startTime = time.perf_counter()                                                             # set the reference point to measure performance
-    for i in range(startPage, endPage + 1) :                                                    # endPage + 1 → run until endPage
+    startTime = time.perf_counter()                                                         # set the reference point to measure performance
+    for i in range(startPage, endPage + 1) :                                                # endPage + 1 → run until endPage
 
         # Measure the completion ratio and avoid the data request frequency limmit if it exists (180 sec.)
         if (i != startPage) and (i % measurePerfTerm == 0 or i == endPage)  :
@@ -138,19 +138,19 @@ else :
 
             # Refine raw XML data to be suitable with pandas dataframe 
             params['pageNo'] = i
-            response = requests.get(url, params=params)                                             # doesn't require encoding key, but decoding key
-            # print(response.content)                                                               # test : .content is necessary, not use only response
-            soup = BeautifulSoup(response.content, "html.parser")                                   # remove 'b and run line replacement
+            response = requests.get(url, params=params)                                     # doesn't require encoding key, but decoding key
+            # print(response.content)                                                       # test : .content is necessary, not use only response
+            soup = BeautifulSoup(response.content, "html.parser")                           # remove 'b and run line replacement
 
             # stack data into pandas data frame (on memory)
-            for item in soup.findAll("body") :                                                      # all data are located between <body> and </body> tags
+            for item in soup.findAll("body") :                                              # all data are located between <body> and </body> tags
                 temp = []
                 for j in range(0, len(soupColumns)) :
-                    if eval(soupColumns[j]) != None :                                               # check if the tag exists
-                        temp.append(eval(soupColumns[j]))                                           # eval() : "item.numofrows.text" to item.numofrows.text
+                    if eval(soupColumns[j]) != None :                                       # check if the tag exists
+                        temp.append(eval(soupColumns[j]))                                   # eval() : "item.numofrows.text" to item.numofrows.text
                     else :
-                        temp.append("")                                                             # fill "" when there is no data in the tag
-                    # print(temp)                                                                   # test : ok - for finding where an error occurs
+                        temp.append("")                                                     # fill empty(or absent) tag with ""
+                    # print(temp)                                                           # test : ok - for finding where an error occurs
                 df.loc[i] = temp
 
     # Check if the download completed well
