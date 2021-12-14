@@ -103,7 +103,7 @@ for i in range(startPage, endPage + 1) :                                        
         elapseTime = time.perf_counter() - startTime
         completionRatio = (i - startPage + 1) / totalPage
         print("{:0,.1f}분 남았습니다. (진행률 : {:0,.1f}%)".format((elapseTime / completionRatio - elapseTime) / 60, completionRatio * 100))
-        time.sleep(sleepTime)
+        # time.sleep(sleepTime)
 
     # Refine raw XML data to be suitable with pandas dataframe
     params['pageNo'] = i
