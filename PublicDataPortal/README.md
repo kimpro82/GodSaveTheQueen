@@ -86,6 +86,20 @@ else :
   · Check if there is already a file that has the same name
 - Include `Key_Sample.py` as an example (You should change the name as `Key.py`.)
 
+#### Key_Sample.py
+```python
+encodingKey = ''
+decodingKey = ''
+
+path = ''
+
+columns = [
+    "numofrows",
+    "pageno",
+    # add more columns
+]
+```
+
 #### 2.1 Required modules
 ```python
 # 2.1 Required modules
