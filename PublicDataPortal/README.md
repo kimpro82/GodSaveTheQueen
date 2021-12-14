@@ -18,7 +18,7 @@ https://www.data.go.kr/
 
 #### 2.3 Loop to request data continously
 ```python
-    # ……
+    # …… skipped the above codes that have no change ……
 
     # Stack data into pandas data frame (on memory)
     for item in soup.findAll("body") :                                                      # all data are located between <body> and </body> tags
@@ -34,14 +34,14 @@ https://www.data.go.kr/
 
 #### 2.4 Loop to request missing data 
 ```python
-missingPage = (endPage - startPage + 1) - len(df)                                             # get the number of missing data
+missingPage = (endPage - startPage + 1) - len(df)                                           # get the number of missing data
 measurePerfTerm = max(1, totalPage / 10)                                                    # check the completion ratio 10 times
 if missingPage == 0 :
     print("누락된 데이터가 없습니다.")
 else :
     print("누락된 데이터({}건)의 추가 다운로드를 시작합니다.".format(missingPage))
-    startTime = time.perf_counter()                                                             # set the reference point to measure performance
-    for i in range(startPage, endPage + 1) :                                                    # endPage + 1 → run until endPage
+    startTime = time.perf_counter()                                                         # set the reference point to measure performance
+    for i in range(startPage, endPage + 1) :                                                # endPage + 1 → run until endPage
 
         # Measure the completion ratio and avoid the data request frequency limmit if it exists (180 sec.)
         if (i != startPage) and (i % measurePerfTerm == 0 or i == endPage)  :
@@ -55,25 +55,25 @@ else :
 
             # Refine raw XML data to be suitable with pandas dataframe 
             params['pageNo'] = i
-            response = requests.get(url, params=params)                                             # doesn't require encoding key, but decoding key
-            # print(response.content)                                                               # test : .content is necessary, not use only response
-            soup = BeautifulSoup(response.content, "html.parser")                                   # remove 'b and run line replacement
+            response = requests.get(url, params=params)                                     # doesn't require encoding key, but decoding key
+            # print(response.content)                                                       # test : .content is necessary, not use only response
+            soup = BeautifulSoup(response.content, "html.parser")                           # remove 'b and run line replacement
 
             # stack data into pandas data frame (on memory)
-            for item in soup.findAll("body") :                                                      # all data are located between <body> and </body> tags
+            for item in soup.findAll("body") :                                              # all data are located between <body> and </body> tags
                 temp = []
                 for j in range(0, len(soupColumns)) :
-                    if eval(soupColumns[j]) != None :                                               # check if the tag exists
-                        temp.append(eval(soupColumns[j]))                                           # eval() : "item.numofrows.text" to item.numofrows.text
+                    if eval(soupColumns[j]) != None :                                       # check if the tag exists
+                        temp.append(eval(soupColumns[j]))                                   # eval() : "item.numofrows.text" to item.numofrows.text
                     else :
-                        temp.append("")                                                             # fill "" when there is no data in the tag
-                    # print(temp)                                                                   # test : ok - for finding where an error occurs
+                        temp.append("")                                                     # fill "" when there is no data in the tag
+                    # print(temp)                                                           # test : ok - for finding where an error occurs
                 df.loc[i] = temp
 ```
 
 #### 2.5 Save data as a .csv fie
 ```python
-# just changed numbering from the previous '2.4 Save data as a .csv fie'
+# …… just changed numbering from the previous '2.4 Save data as a .csv fie' ……
 ```
 
 
