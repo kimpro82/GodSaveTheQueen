@@ -86,7 +86,7 @@ for i in range(startPage, endPage + 1) :                                        
         elapseTime = time.perf_counter() - startTime
         completionRatio = (i - startPage + 1) / totalPage
         print("{:0,.1f}분 남았습니다. (진행률 : {:0,.1f}%)".format((elapseTime / completionRatio - elapseTime) / 60, completionRatio * 100))
-        time.sleep(sleepTime)
+        # time.sleep(sleepTime)
 
     # Refine raw XML data to be suitable with pandas dataframe
     params['pageNo'] = i
@@ -94,7 +94,7 @@ for i in range(startPage, endPage + 1) :                                        
     # print(response.content)                                                               # test : .content is necessary, not use only response
     soup = BeautifulSoup(response.content, "html.parser")                                   # remove 'b and run line replacement
 
-    # stack data into pandas data frame (on memory)
+    # Stack data into pandas data frame (on memory)
     for item in soup.findAll("body") :                                                      # all data are located between <body> and </body> tags
         temp = []
         for j in range(0, len(soupColumns)) :
@@ -108,13 +108,12 @@ for i in range(startPage, endPage + 1) :                                        
 
 # 2.4 Loop to request missing data 
 
-
-totalPage = (endPage - startPage + 1) - len(df)                                             # get the number of missing data
+missingPage = (endPage - startPage + 1) - len(df)                                             # get the number of missing data
 measurePerfTerm = max(1, totalPage / 10)                                                    # check the completion ratio 10 times
-if totalPage == 0 :
+if missingPage == 0 :
     print("누락된 데이터가 없습니다.")
 else :
-    print("누락된 데이터({}건)의 추가 다운로드를 시작합니다.".format(totalPage))
+    print("누락된 데이터({}건)의 추가 다운로드를 시작합니다.".format(missingPage))
     startTime = time.perf_counter()                                                             # set the reference point to measure performance
     for i in range(startPage, endPage + 1) :                                                    # endPage + 1 → run until endPage
 
@@ -123,7 +122,7 @@ else :
             elapseTime = time.perf_counter() - startTime
             completionRatio = (i - startPage + 1) / totalPage
             print("{:0,.1f}분 남았습니다. (진행률 : {:0,.1f}%)".format((elapseTime / completionRatio - elapseTime) / 60, completionRatio * 100))
-            time.sleep(sleepTime)
+            # time.sleep(sleepTime)
 
         # find if missing data
         if i not in df['pageno'] :
@@ -151,7 +150,7 @@ else :
 # print(df)                                                                                 # test : ok
 if os.path.isfile(path) :                                                                   # to prevent overwriting the file
     print("이미 같은 이름의 파일이 존재합니다. (", path, ")")
-    # don't need to run the loop again, just change the file name
+    # don't need to run the loop again, just change the old file's name
 else :
     df.to_csv(path, encoding = 'utf-8-sig')
     if os.path.isfile(path) :                                                               # I am too hospitable, you must have won a man like the lotto!
