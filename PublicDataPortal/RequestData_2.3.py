@@ -34,7 +34,7 @@ params = {
 
 # (2) Set the row number to start and end
 startRow = 1
-endRow = 1000                                                                               # put small number during test (max : 38960)
+endRow = 3000                                                                                # put small number during test (max : 38960)
 
 # (3) Set the .csv file path to save data
 fileName = "test"                                                                           # don't include ".csv"
@@ -129,9 +129,9 @@ else :
         # Measure the completion ratio and avoid the data request frequency limmit if it exists (180 sec.)
         if (i != startPage) and (i % measurePerfTerm == 0 or i == endPage)  :
             elapseTime = time.perf_counter() - startTime
-            completionRatio = (i - startPage + 1) / missingPage
+            completionRatio = (i - startPage + 1) / totalPage
             print("{:0,.1f}분 남았습니다. (진행률 : {:0,.1f}%)".format((elapseTime / completionRatio - elapseTime) / 60, completionRatio * 100))
-            time.sleep(sleepTime)
+            # time.sleep(sleepTime)
 
         # find if missing data
         if i not in df['pageno'] :
@@ -152,8 +152,6 @@ else :
                         temp.append("")                                                             # fill "" when there is no data in the tag
                     # print(temp)                                                                   # test : ok - for finding where an error occurs
                 df.loc[i] = temp
-
-        # break condition
 
     # Check if the download completed well
     completedRow -= len(df)
