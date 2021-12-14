@@ -34,7 +34,7 @@ params = {
 
 # (2) Set the row number to start and end
 startRow = 1
-endRow = 100                                                                                # put small number during test (max : 38960)
+endRow = 1000                                                                               # put small number during test (max : 38960)
 
 # (3) Set the .csv file path to save data
 fileName = "test"                                                                           # don't include ".csv"
@@ -76,6 +76,7 @@ for c in Key.columns :
 # 2.3 Loop to request data continously
 
 print("데이터 다운로드를 시작합니다.")
+
 startTime = time.perf_counter()                                                             # set the reference point to measure performance
 for i in range(startPage, endPage + 1) :                                                    # endPage + 1 → run until endPage
 
@@ -86,7 +87,7 @@ for i in range(startPage, endPage + 1) :                                        
         elapseTime = time.perf_counter() - startTime
         completionRatio = (i - startPage + 1) / totalPage
         print("{:0,.1f}분 남았습니다. (진행률 : {:0,.1f}%)".format((elapseTime / completionRatio - elapseTime) / 60, completionRatio * 100))
-        time.sleep(sleepTime)
+        # time.sleep(sleepTime)
 
     # Refine raw XML data to be suitable with pandas dataframe
     params['pageNo'] = i
@@ -94,7 +95,7 @@ for i in range(startPage, endPage + 1) :                                        
     # print(response.content)                                                               # test : .content is necessary, not use only response
     soup = BeautifulSoup(response.content, "html.parser")                                   # remove 'b and run line replacement
 
-    # stack data into pandas data frame (on memory)
+    # Stack data into pandas data frame (on memory)
     for item in soup.findAll("body") :                                                      # all data are located between <body> and </body> tags
         temp = []
         for j in range(0, len(soupColumns)) :
@@ -105,23 +106,30 @@ for i in range(startPage, endPage + 1) :                                        
             # print(temp)                                                                   # test : ok - for finding where an error occurs
         df.loc[i] = temp
 
+# Check if the download completed well
+requestedRow = endRow - startRow + 1
+completedRow = len(df)
+print("총 {}건의 요청 데이터 중 {}건의 다운로드가 완료되었습니다. (성공률 : {:0.1f}%)".format(requestedRow, completedRow, (completedRow / requestedRow) * 100))
+
 
 # 2.4 Loop to request missing data 
 
-
-totalPage = (endPage - startPage + 1) - len(df)                                             # get the number of missing data
+missingPage = (endPage - startPage + 1) - len(df)                                             # get the number of missing data
 measurePerfTerm = max(1, totalPage / 10)                                                    # check the completion ratio 10 times
-if totalPage == 0 :
+
+if missingPage == 0 :
     print("누락된 데이터가 없습니다.")
+
 else :
-    print("누락된 데이터({}건)의 추가 다운로드를 시작합니다.".format(totalPage))
+    print("누락된 데이터({}건)의 추가 다운로드를 시작합니다.".format(missingPage))
+
     startTime = time.perf_counter()                                                             # set the reference point to measure performance
     for i in range(startPage, endPage + 1) :                                                    # endPage + 1 → run until endPage
 
         # Measure the completion ratio and avoid the data request frequency limmit if it exists (180 sec.)
         if (i != startPage) and (i % measurePerfTerm == 0 or i == endPage)  :
             elapseTime = time.perf_counter() - startTime
-            completionRatio = (i - startPage + 1) / totalPage
+            completionRatio = (i - startPage + 1) / missingPage
             print("{:0,.1f}분 남았습니다. (진행률 : {:0,.1f}%)".format((elapseTime / completionRatio - elapseTime) / 60, completionRatio * 100))
             time.sleep(sleepTime)
 
@@ -144,6 +152,12 @@ else :
                         temp.append("")                                                             # fill "" when there is no data in the tag
                     # print(temp)                                                                   # test : ok - for finding where an error occurs
                 df.loc[i] = temp
+
+        # break condition
+
+    # Check if the download completed well
+    completedRow -= len(df)
+    print("총 {}건의 누락 데이터 중 {}건의 다운로드가 완료되었습니다. (성공률 : {:0.1f}%)".format(missingPage, completedRow, (completedRow / missingPage) * 100))
 
 
 # 2.5 Save data as a .csv fie
