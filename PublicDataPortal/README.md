@@ -11,7 +11,7 @@ https://www.data.go.kr/
 
 
 ## [Request Data 2.2 (2021.12.09)](/PublicDataPortal#public-data-portal)
-- Add a loop to **request missing data** additionally in `2.4` (repeatable)
+- Add a loop to **request missing data** in `2.4` (repeatable)
 - Fill empty(or absent) tag with `""`, instead of the process stop with an error occurrence
 
 ### Mainly changed parts from [Request Data 2.1 (2021.12.09)](/PublicDataPortal#request-data-21-20211209)
