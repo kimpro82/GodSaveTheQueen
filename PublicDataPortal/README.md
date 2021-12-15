@@ -4,9 +4,77 @@ https://www.data.go.kr/
 
 ![The Dark Portal](Images/WOW_DarkPortal_600.jpg)
 
+- [Request Data 2.2 (2021.12.09)](/PublicDataPortal#request-data-22-20211209)
 - [Request Data 2.1 (2021.12.09)](/PublicDataPortal#request-data-21-20211209)
 - [Request Data 2 (2021.12.08)](/PublicDataPortal#request-data-2-20211208)
 - [Request Data 1 (2021.12.04)](/PublicDataPortal#request-data-1-20211204)
+
+
+## [Request Data 2.2 (2021.12.09)](/PublicDataPortal#public-data-portal)
+- Add a loop to **request missing data** in `2.4` (repeatable)
+- Fill empty(or absent) tag with `""`, instead of the process stop with an error occurrence
+
+### Mainly changed parts from [Request Data 2.1 (2021.12.09)](/PublicDataPortal#request-data-21-20211209)
+
+#### 2.3 Loop to request data continously
+```python
+    # …… skipped the above codes that have no change ……
+
+    # Stack data into pandas data frame (on memory)
+    for item in soup.findAll("body") :                                                      # all data are located between <body> and </body> tags
+        temp = []
+        for j in range(0, len(soupColumns)) :
+            if eval(soupColumns[j]) != None :                                               # check if the tag exists
+                temp.append(eval(soupColumns[j]))                                           # eval() : "item.numofrows.text" to item.numofrows.text
+            else :
+                temp.append("")                                                             # fill "" when there is no data in the tag
+            # print(temp)                                                                   # test : ok - for finding where an error occurs
+        df.loc[i] = temp
+```
+
+#### 2.4 Loop to request missing data 
+```python
+missingPage = (endPage - startPage + 1) - len(df)                                           # get the number of missing data
+measurePerfTerm = max(1, totalPage / 10)                                                    # check the completion ratio 10 times
+if missingPage == 0 :
+    print("누락된 데이터가 없습니다.")
+else :
+    print("누락된 데이터({}건)의 추가 다운로드를 시작합니다.".format(missingPage))
+    startTime = time.perf_counter()                                                         # set the reference point to measure performance
+    for i in range(startPage, endPage + 1) :                                                # endPage + 1 → run until endPage
+
+        # Measure the completion ratio and avoid the data request frequency limmit if it exists (180 sec.)
+        if (i != startPage) and (i % measurePerfTerm == 0 or i == endPage)  :
+            elapseTime = time.perf_counter() - startTime
+            completionRatio = (i - startPage + 1) / totalPage
+            print("{:0,.1f}분 남았습니다. (진행률 : {:0,.1f}%)".format((elapseTime / completionRatio - elapseTime) / 60, completionRatio * 100))
+            # time.sleep(sleepTime)
+
+        # find if missing data
+        if i not in df['pageno'] :
+
+            # Refine raw XML data to be suitable with pandas dataframe 
+            params['pageNo'] = i
+            response = requests.get(url, params=params)                                     # doesn't require encoding key, but decoding key
+            # print(response.content)                                                       # test : .content is necessary, not use only response
+            soup = BeautifulSoup(response.content, "html.parser")                           # remove 'b and run line replacement
+
+            # stack data into pandas data frame (on memory)
+            for item in soup.findAll("body") :                                              # all data are located between <body> and </body> tags
+                temp = []
+                for j in range(0, len(soupColumns)) :
+                    if eval(soupColumns[j]) != None :                                       # check if the tag exists
+                        temp.append(eval(soupColumns[j]))                                   # eval() : "item.numofrows.text" to item.numofrows.text
+                    else :
+                        temp.append("")                                                     # fill empty(or absent) tag with ""
+                    # print(temp)                                                           # test : ok - for finding where an error occurs
+                df.loc[i] = temp
+```
+
+#### 2.5 Save data as a .csv fie
+```python
+# …… just changed numbering from the previous '2.4 Save data as a .csv fie' ……
+```
 
 
 ## [Request Data 2.1 (2021.12.09)](/PublicDataPortal#public-data-portal)
@@ -18,8 +86,22 @@ https://www.data.go.kr/
   · Check if there is already a file that has the same name
 - Include `Key_Sample.py` as an example (You should change the name as `Key.py`.)
 
+#### Key_Sample.py
+```python
+encodingKey = ''
+decodingKey = ''
+
+path = ''
+
+columns = [
+    "numofrows",
+    "pageno",
+    # add more columns
+]
+```
+
 #### 2.1 Required modules
-```R
+```python
 # 2.1 Required modules
 
 import requests                 # send assembled URL and get API response 
@@ -33,7 +115,7 @@ import Key                      # call keys, the file path to save and the list 
 ```
 
 #### 2.2 Setting
-```R
+```python
 ###################################### 2.2 SETTING ######################################   # can you feel my love?
 
 # (1) Set url for requesting data : append params to url
@@ -65,7 +147,7 @@ df = pd.DataFrame(columns = Key.columns)                                        
 ```
 
 #### 2.2.1 Background operation related with 2.2 Setting
-```R
+```python
 # Find where the startPage and endPage are
 startPage = math.floor(startRow / int(params['numOfRows']))                                 # floor() : rounding down
 endPage = math.ceil(endRow / int(params['numOfRows']))                                      # ceil() : rounding up
@@ -83,7 +165,7 @@ for c in Key.columns :
 ```
 
 #### (Test : request data of 1 set)
-```R
+```python
 # response = requests.get(url, params=params)                                               # doesn't require encoding key, but decoding key
 # print(response.content)                                                                   # test to check if the raw XML data arrive well
 # soup = BeautifulSoup(response.content, "html.parser")                                     # remove 'b and run line replacement
@@ -91,7 +173,7 @@ for c in Key.columns :
 ```
 
 #### 2.3 Loop to request data continously
-```R
+```python
 print("데이터 다운로드를 시작합니다.")
 startTime = time.perf_counter()                                                             # set the reference point to measure performance
 for i in range(startPage, endPage + 1) :                                                    # endPage + 1 → run until endPage
@@ -103,7 +185,7 @@ for i in range(startPage, endPage + 1) :                                        
         elapseTime = time.perf_counter() - startTime
         completionRatio = (i - startPage + 1) / totalPage
         print("{:0,.1f}분 남았습니다. (진행률 : {:0,.1f}%)".format((elapseTime / completionRatio - elapseTime) / 60, completionRatio * 100))
-        time.sleep(sleepTime)
+        # time.sleep(sleepTime)
 
     # Refine raw XML data to be suitable with pandas dataframe
     params['pageNo'] = i
@@ -120,7 +202,7 @@ for i in range(startPage, endPage + 1) :                                        
 ```
 
 #### 2.4 Save data as a .csv fie
-```R
+```python
 # print(df)                                                                                 # test : ok
 if os.path.isfile(path) :                                                                   # to prevent overwriting the file
     print("이미 같은 이름의 파일이 존재합니다. (", path, ")")

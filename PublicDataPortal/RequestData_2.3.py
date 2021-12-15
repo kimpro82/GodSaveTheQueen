@@ -34,7 +34,7 @@ params = {
 
 # (2) Set the row number to start and end
 startRow = 1
-endRow = 100                                                                                # put small number during test (max : 38960)
+endRow = 3000                                                                                # put small number during test (max : 38960)
 
 # (3) Set the .csv file path to save data
 fileName = "test"                                                                           # don't include ".csv"
@@ -76,6 +76,7 @@ for c in Key.columns :
 # 2.3 Loop to request data continously
 
 print("데이터 다운로드를 시작합니다.")
+
 startTime = time.perf_counter()                                                             # set the reference point to measure performance
 for i in range(startPage, endPage + 1) :                                                    # endPage + 1 → run until endPage
 
@@ -105,15 +106,23 @@ for i in range(startPage, endPage + 1) :                                        
             # print(temp)                                                                   # test : ok - for finding where an error occurs
         df.loc[i] = temp
 
+# Check if the download completed well
+requestedRow = endRow - startRow + 1
+completedRow = len(df)
+print("총 {}건의 요청 데이터 중 {}건의 다운로드가 완료되었습니다. (성공률 : {:0.1f}%)".format(requestedRow, completedRow, (completedRow / requestedRow) * 100))
+
 
 # 2.4 Loop to request missing data 
 
 missingPage = (endPage - startPage + 1) - len(df)                                           # get the number of missing data
 measurePerfTerm = max(1, totalPage / 10)                                                    # check the completion ratio 10 times
+
 if missingPage == 0 :
     print("누락된 데이터가 없습니다.")
+
 else :
     print("누락된 데이터({}건)의 추가 다운로드를 시작합니다.".format(missingPage))
+
     startTime = time.perf_counter()                                                         # set the reference point to measure performance
     for i in range(startPage, endPage + 1) :                                                # endPage + 1 → run until endPage
 
@@ -143,6 +152,10 @@ else :
                         temp.append("")                                                     # fill empty(or absent) tag with ""
                     # print(temp)                                                           # test : ok - for finding where an error occurs
                 df.loc[i] = temp
+
+    # Check if the download completed well
+    completedRow -= len(df)
+    print("총 {}건의 누락 데이터 중 {}건의 다운로드가 완료되었습니다. (성공률 : {:0.1f}%)".format(missingPage, completedRow, (completedRow / missingPage) * 100))
 
 
 # 2.5 Save data as a .csv fie
