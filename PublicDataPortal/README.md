@@ -4,17 +4,202 @@ https://www.data.go.kr/
 
 ![The Dark Portal](Images/WOW_DarkPortal_600.jpg)
 
+### \<List>
+- [Request Data 3 (2022.9.21)](/PublicDataPortal#request-data-3-2022921)
 - [Request Data 2.2 (2021.12.09)](/PublicDataPortal#request-data-22-20211209)
 - [Request Data 2.1 (2021.12.09)](/PublicDataPortal#request-data-21-20211209)
 - [Request Data 2 (2021.12.08)](/PublicDataPortal#request-data-2-20211208)
 - [Request Data 1 (2021.12.04)](/PublicDataPortal#request-data-1-20211204)
 
 
-## [Request Data 2.2 (2021.12.09)](/PublicDataPortal#public-data-portal)
+## [Request Data 3 (2022.9.21)](#list)
+
+- Divide files
+  - setting.py : contains parameters controlled by user
+  - key.py : contain encryption keys (one user has the same keys whatever the data is)
+  - operation.py : don't need to change the codes of operation part
+- ~~can receive multi-results from one page~~ (next task)
+- do not suspend, by the reason that can be discovered before operation, after operation
+- use file system so that can save partial data even if it stop unexpectedly
+
+<details>
+    <summary>Codes</summary>
+
+    #### `RequestData_3_Run.py`
+    ```python
+    import Key                      as Key
+    import RequestData_3_Operation  as Operation
+    ```
+    ```python
+    ###################################### SETTING ##########################################
+
+    # (1) 데이터 제목 : 공공데이터포털 > 오픈API > 금융위원회_채권발행정보 > 발행자별발행종목현황조회
+    # (2) 페이지 링크 : https://www.data.go.kr/data/15043421/openapi.do
+
+    # (3) 요청주소
+    url = 'http://apis.data.go.kr/1160100/service/GetBondTradInfoService/getIssuIssuItemStat'
+
+    # (4) pageNo의 시작과 끝, 간격
+    page = {
+        'start' : 1,
+        'end' : 10,                                                                             # ★ 테스트시에는 충분히 작은 숫자를 대입 : ex. 10
+        'interval' : 1,
+    }
+
+    # (5) 데이터 저장 경로 및 파일명
+    path = {
+        'path' : '.',                                                                           # . : 현재 위치를 의미
+        'fileName' : '발행자별발행종목현황조회',                                                  # 확장자 없이 입력
+    }
+
+    # (6) 요청 시간 간격 (초)
+    sleepTime = 0                                                                               # 단기적인 트래픽 제한이 없다면 0으로 유지
+
+    # (7) 요청변수
+    params = {
+        'serviceKey' : Key.decodingKey,                                                         # .encodingKey로 설정시 오류 발생; SERVICE_KEY_IS_NOT_REGISTERED_ERROR
+        'pageNo' : '1',                                                                         # 1로 고정
+        'numOfRows' : '1',                                                                      # 페이지당 결과수 (복수값 적용은 개발중)
+        'resultType' : 'xml',                                                                   # xml/json 중에서 선택 가능하나, 본 프로그램은 xml만을 지원함
+        # 'basDt' : '20201116',
+        # 'crno' : '1101110084767',
+        # 'bondIsurNm' : '국동'
+    }
+
+    # (8) 출력결과
+    columns = [
+        "resultCode",
+        "resultMsg",
+        "numofrows",
+        "pageno",
+        "totalCount",
+        "basDt",
+        "crno",
+        "bondIsurNm",
+        # add more columns
+    ]
+
+    #########################################################################################
+    ```
+    ```python
+    # 실행
+    if __name__ == "__main__" :
+
+        Operation.Operation(
+            url,
+            page,
+            path,
+            sleepTime,
+            params,
+            columns
+        )
+    ```
+
+    #### `RequestData_3_Operation.py`
+    ```python
+    import  requests                                # REST API 호출
+    from    bs4         import  BeautifulSoup       # XML 데이터 해석
+    import  csv                                     # .csv 파일로 저장
+    import  time                                    # 실행시간 측정
+    import  math                                    # 반올림; .floor(), .ceil()
+    import  os                                      # 파일명 중복 체크
+    ```
+    ```python
+    # bs4Test : params에 최초 설정된 대로 xml 다운로드 테스트
+    def bs4Test(url, params, run = True) :
+        if run :
+            response = requests.get(url, params=params)                                         # . get() 자체적으로 encoding을 하므로 decoding key를 사용
+            soup = BeautifulSoup(response.content, "html.parser")                               # 'b 삭제, 행갈이 추가
+            print("soup\t\t\t:\n", soup)                                                        # 테스트 출력
+    ```
+    ```python
+    def Operation(
+        url,
+        page,
+        path,
+        sleepTime,
+        params,
+        columns,
+        test = False
+        ) :
+
+        # 총 페이지 수
+        totalPage = int((page['end'] - page['start'])/page['interval']) + 1
+
+        # 저장 경로 & 파일명 설정
+        savePath = path['path'] + '/' + path['fileName'] + '_' + str(page['start']) + "_" + str(page['end']) + ".csv"
+
+        # columns → "item.****.text"꼴로 변환 (xml 문서 분석용)
+        soupColumns = []
+        for c in columns :
+            soupColumns.append("item." + c.lower() + ".text")
+
+        # 다운로드 개시 전 테스트
+        if test :
+            print("<테스트 모드>")    
+            print("totalPage\t\t:", totalPage)
+            print("savePath\t\t:", savePath)
+            print("soupColumns (Top 5)\t:", soupColumns[0:5])
+            bs4Test(url, params, False)                                                         # bs4Test : params에 최초 설정된 대로 xml 다운로드 테스트, (run = False : 실행 X)
+
+        # 다운로드
+        obs = 1
+        # startTime = time.perf_counter()                                                       # 시작 시간
+
+        with open(savePath, 'a', newline='') as f:                                              # f: 띄어쓰면 오류
+
+            wr = csv.writer(f)
+
+            if os.path.getsize(savePath) > 0 :                                                  # 실행 전 파일명 중복 여부 검사
+                print("이미 존재하는 파일에 이어씁니다. (", savePath, ")")
+            else :
+                wr.writerow(columns)                                                            # 최초 작성시 1행에 헤더 라인 삽입 (변수명)
+
+            for i in range(page['start'], page['end'] + 1, page['interval']) :
+
+                if test :
+                    print(i)
+
+                params['pageNo'] = i
+                response = requests.get(url, params=params)                                     # . get() 자체적으로 encoding을 하므로 decoding key를 사용
+                soup = BeautifulSoup(response.content, "html.parser")                           # 'b 삭제, 행갈이 추가
+
+                # Stack data into pandas data frame (on memory)
+                for item in soup.findAll("response") :                                          # 모든 데이터는 <body> </body> 태그 사이에 위치
+                    temp = []
+                    for j in range(0, len(soupColumns)) :
+                        if eval(soupColumns[j]) != None :                                       # 각 데이터 열(태그) 존재 여부 확인
+                            temp.append(eval(soupColumns[j]))                                   # eval() : "item.numofrows.text" to item.numofrows.text
+                        else :
+                            temp.append("")                                                     # 빈 태그에 "" 삽입
+                    if test :
+                        print(temp)                                                             # test
+                    wr.writerow(temp)
+    ```
+    ```python
+    if __name__ == "__main__" :
+
+        import RequestData_3_Run as Run
+
+        Operation(
+            Run.url,
+            Run.page,
+            Run.path,
+            Run.sleepTime,
+            Run.params,
+            Run.columns,
+            test = True
+        )
+    ```
+  </details>
+
+
+## [Request Data 2.2 (2021.12.09)](#list)
+
 - Add a loop to **request missing data** in `2.4` (repeatable)
 - Fill empty(or absent) tag with `""`, instead of the process stop with an error occurrence
 
-    <details>
+  <details>
     <summary>Mainly changed parts from <i>Request Data 2.1 (2021.12.09)</i></summary>
 
     #### 2.3 Loop to request data continously
@@ -77,10 +262,10 @@ https://www.data.go.kr/
     # …… just changed numbering from the previous '2.4 Save data as a .csv fie' ……
     ```
 
-    </details>
+  </details>
 
 
-## [Request Data 2.1 (2021.12.09)](/PublicDataPortal#public-data-portal)
+## [Request Data 2.1 (2021.12.09)](#list)
 
 - Improve details in conditions for setting : can specify the starting row and ending one in *2.2 Setting*
 - Print progress statements only 10 times
@@ -89,7 +274,7 @@ https://www.data.go.kr/
   · Check if there is already a file that has the same name
 - Include `Key_Sample.py` as an example (You should change the name as `Key.py`.)
 
-    <details>
+  <details>
     <summary>Codes</summary>
 
     #### Key_Sample.py
@@ -221,13 +406,14 @@ https://www.data.go.kr/
             print("데이터가 정상적으로 저장되지 않았습니다.")
     ```
 
-    </details>
+  </details>
 
     #### Result
     ![Result](Images/PublicDataPortal_2.1.PNG)
 
 
-## [Request Data 2 (2021.12.08)](/PublicDataPortal#public-data-portal)
+## [Request Data 2 (2021.12.08)](#list)
+
 - Can control path where to save data in `Key.py`
 - Deal data with `BeautifulSoup` and `Pandas`
 - Arrange parameters that user should manage into *2.2 Setting*
@@ -235,12 +421,13 @@ https://www.data.go.kr/
 - Save data into a `.csv` file
 
 
-## [Request Data 1 (2021.12.04)](/PublicDataPortal#public-data-portal)
+## [Request Data 1 (2021.12.04)](#list)
+
 - Partially customized example code from the originally supported one
 - Request data once and receive its result in `XML` format
 - ※ Why error? You should **choose the decoding key**. Don't encode the already encoded key again
 
-    <details>
+  <details>
     <summary>Codes</summary>
 
     #### Key.py
@@ -269,7 +456,7 @@ https://www.data.go.kr/
     print(response.content)
     ```
 
-    </details>
+  </details>
 
 #### Output
 ```xml
