@@ -15,9 +15,9 @@ https://www.data.go.kr/
 ## [Request Data 3 (2022.9.21)](#list)
 
 - Divide files
-  - setting.py : contains parameters controlled by user
-  - key.py : contain encryption keys (one user has the same keys whatever the data is)
-  - operation.py : don't need to change the codes of operation part
+  - `setting.py` : contains parameters controlled by user
+  - `key.py` : contain encryption keys (one user has the same keys whatever the data is)
+  - `operation.py` : don't need to change the codes of operation part
 - ~~can receive multi-results from one page~~ (next task)
 - do not suspend, by the reason that can be discovered before operation, after operation
 - use file system so that can save partial data even if it stop unexpectedly
