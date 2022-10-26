@@ -191,8 +191,9 @@ https://www.data.go.kr/
             test = True
         )
     ```
+  </details>
 
-    #### `발행자별발행종목현황조회_1_10.csv`
+    #### Output : `발행자별발행종목현황조회_1_10.csv`
     ```csv
     resultCode,resultMsg,numofrows,pageno,totalCount,basDt,crno,bondIsurNm
     00,NORMAL SERVICE.,1,1,47248,20200715,1101110168595,삼성중공업
@@ -207,7 +208,7 @@ https://www.data.go.kr/
     00,NORMAL SERVICE.,1,10,47248,20200716,1101110003668,한진
     ```
 
-    ### Test output
+    #### Output : Test Mode
     ```
     <테스트 모드>
     totalPage               : 10
@@ -223,8 +224,6 @@ https://www.data.go.kr/
     10
     ['00', 'NORMAL SERVICE.', '1', '10', '47248', '20200716', '1101110003668', '한진']
     ```
-
-  </details>
 
 
 ## [Request Data 2.2 (2021.12.09)](#list)
@@ -294,7 +293,6 @@ https://www.data.go.kr/
     ```python
     # …… just changed numbering from the previous '2.4 Save data as a .csv fie' ……
     ```
-
   </details>
 
 
@@ -438,7 +436,6 @@ https://www.data.go.kr/
         else :
             print("데이터가 정상적으로 저장되지 않았습니다.")
     ```
-
   </details>
 
     #### Result
@@ -488,7 +485,6 @@ https://www.data.go.kr/
     response = requests.get(url, params=params)     # doesn't require encoding key, but decoding key
     print(response.content)
     ```
-
   </details>
 
 #### Output
