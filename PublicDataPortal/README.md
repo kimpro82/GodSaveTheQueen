@@ -191,6 +191,39 @@ https://www.data.go.kr/
             test = True
         )
     ```
+
+    #### `발행자별발행종목현황조회_1_10.csv`
+    ```csv
+    resultCode,resultMsg,numofrows,pageno,totalCount,basDt,crno,bondIsurNm
+    00,NORMAL SERVICE.,1,1,47248,20200715,1101110168595,삼성중공업
+    00,NORMAL SERVICE.,1,2,47248,20200715,1101110377203,현대카드
+    00,NORMAL SERVICE.,1,3,47248,20200715,1101110672538,하나은행
+    00,NORMAL SERVICE.,1,4,47248,20200715,1101112615578,메지온
+    00,NORMAL SERVICE.,1,5,47248,20200715,1101114546523,KB국민카드
+    00,NORMAL SERVICE.,1,6,47248,20200715,1101116837772,키움캐피탈
+    00,NORMAL SERVICE.,1,7,47248,20200715,1101350000903,중소기업은행
+    00,NORMAL SERVICE.,1,8,47248,20200715,1101350000937,한국산업은행
+    00,NORMAL SERVICE.,1,9,47248,20200715,1641710000052,한국수자원공사
+    00,NORMAL SERVICE.,1,10,47248,20200716,1101110003668,한진
+    ```
+
+    ### Test output
+    ```
+    <테스트 모드>
+    totalPage               : 10
+    savePath                : ./발행자별발행종목현황조회_1_10.csv
+    soupColumns (Top 5)     : ['item.resultcode.text', 'item.resultmsg.text', 'item.numofrows.text', 'item.pageno.text', 'item.totalcount.text']
+    1
+    ['00', 'NORMAL SERVICE.', '1', '1', '47248', '20200715', '1101110168595', '삼성중공업']
+    2
+    ['00', 'NORMAL SERVICE.', '1', '2', '47248', '20200715', '1101110377203', '현대카드']
+    3
+    ['00', 'NORMAL SERVICE.', '1', '3', '47248', '20200715', '1101110672538', '하나은행']
+    ……
+    10
+    ['00', 'NORMAL SERVICE.', '1', '10', '47248', '20200716', '1101110003668', '한진']
+    ```
+
   </details>
 
 
