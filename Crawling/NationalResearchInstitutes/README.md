@@ -1,5 +1,7 @@
 # [Web Crawling](../../README.md#web-crawling)
 
+Rent seeking through technology in my marriage
+
 
 ### \<List>
 
@@ -16,7 +18,7 @@
 - Future improvements
   - Add some crawling tasks for unstandardized linked pages
 
-  <details>
+  <br><details>
     <summary>Codes : crawling_national_research_institutes.py</summary>
 
   ```py
