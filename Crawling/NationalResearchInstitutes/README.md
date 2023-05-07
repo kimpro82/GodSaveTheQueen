@@ -8,7 +8,13 @@
 
 ## [National Research Institutes' List (2023.05.06)](#list)
 
-- She seems to know the national research institutes' list in Seoul.
+- She wanted to know a list of national research institutes located in Seoul.
+  - I promised to keep her living in a happy dream forever.
+- Crawled the ["정부출연기관" page](https://ko.wikipedia.org/wiki/정부출연연구기관) along with its associated ones from the Korean Wikipedia.
+- The \<modified> version of the CSV file has been partially edited manually based on the original output.
+- Use `https://www.convertcsv.com/csv-to-markdown.htm` to convert *CSV* to *markdown*.
+- Future improvements
+  - Add some crawling tasks for unstandardized linked pages
 
   <details>
     <summary>Codes : crawling_national_research_institutes.py</summary>
@@ -89,7 +95,19 @@
   ```
   </details>
   <details open>
+    <summary>Output : Printing the progress of program</summary>
+
+  ```
+  (1/72) 한국개발연구원 크롤링 중
+  (2/72) KDI 국제정책대학원 크롤링 중
+  (3/72) 국토연구원 크롤링 중
+  ……
+  (72/72) 국립호남권생물자원관 (없는 문서) 크롤링 중
+  ```
+  </details>
+  <details open>
     <summary>Output : national_research_institutes(modified).csv</summary>
+
 
   |기관명 |설립일|소재지|원장 |상급기관|웹사이트|비고 |
   |---|---|---|---|---|---|---|
