@@ -1,6 +1,18 @@
 """
-네이버 주식 종목게시판 크롤링
-2023.06.10
+네이버 주식 종목게시판 크롤링 v0.1
+2023.06.16
+
+작성자: Your prince
+
+기능:
+    - 네이버 종목 게시판에서 일정한 종목, 페이지 범위의 게시물 게시일시 및 제목을 크롤링함.
+    - 종목 및 페이지 범위는 임시로 main() 안에서 리스트로 지정
+    - TEST 모드 지정 가능(True / False)
+
+향후 개선점:
+    - 더 많은 종목 리스트: ex. 코스피200, 상장사 전체 등
+    - 더 많은 페이지 수: ex. 특정 기간까지, 혹은 마지막 페이지까지 등
+    - 크롤링 항목 추가: 본문, 글쓴이 ID 등
 """
 
 
@@ -12,13 +24,32 @@ import aiohttp
 
 
 async def fetch(_session, _url):
+    """
+    지정된 URL에서 HTML 데이터를 가져옵니다.
 
+    Args:
+        _session: aiohttp 클라이언트 세션 객체
+        _url: 가져올 URL
+
+    Returns:
+        _response의 텍스트 데이터
+    """
     async with _session.get(_url) as _response:
         return await _response.text()
 
 
 async def get_post(_session, _code, _page):
+    """
+    종목 코드와 페이지 번호에 해당하는 주식 종목게시판 데이터를 가져옵니다.
 
+    Args:
+        _session: aiohttp 클라이언트 세션 객체
+        _code: 종목 코드
+        _page: 페이지 번호
+
+    Returns:
+        _code, _page, 게시일시와 제목으로 구성된 리스트
+    """
     _url = f"https://finance.naver.com/item/board.naver?code={_code}&page={_page}"
     _time_list = []
     _title_list = []
@@ -48,7 +79,12 @@ async def get_post(_session, _code, _page):
 
 
 async def main():
+    """
+    메인 함수입니다. 비동기로 주식 종목게시판 데이터를 가져와 출력합니다.
 
+    Returns:
+        _tasks의 비동기 결과 리스트
+    """
     if TEST:
         _codes = ["005930"]
         _pages = ["1"]
